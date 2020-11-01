@@ -21,6 +21,8 @@ target/
 
 project.properties
 *.properties
+.yml
+*.yml
 
 ### NetBeans ###
 /nbproject/private/
