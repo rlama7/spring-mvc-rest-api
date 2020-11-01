@@ -65,9 +65,4 @@ public class ProductService {
         repository.deleteById(id);
         return "Product successfully removed --> " + id;
     }
-
-
-
-
-
 }
