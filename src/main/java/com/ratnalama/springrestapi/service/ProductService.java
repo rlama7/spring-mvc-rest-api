@@ -7,6 +7,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * ProductService.java       --A program to represent a product service class.
+ * @author                     Ratna Lama
+ * @version                    1.0
+ * @since                      11/01/2020
+ */
+
 @Service
 public class ProductService {
 

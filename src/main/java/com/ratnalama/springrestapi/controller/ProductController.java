@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * ProductController.java       --A program to represent a controller class.
+ * @author                        Ratna Lama
+ * @version                       1.0
+ * @since                         11/01/2020
+ */
+
 @RestController
 public class ProductController {
 

@@ -5,6 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Product.java       --A program to represent a product entity class.
+ * @author              Ratna Lama
+ * @version             1.0
+ * @since               11/01/2020
+ */
+
 @Entity
 @Table(name= "PRODUCT_TBL")
 public class Product {
