@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 @RestController
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired
@@ -25,20 +26,21 @@ public class ProductController {
      */
 
     // get all products
-    @GetMapping("/products")
+    // defaults to path variable --> api/products
+    @GetMapping
     public List<Product> findAllProducts() {
         return service.getProducts();
     }
 
     // get product by id
-    @GetMapping("/productById/{id}")
-    public Product findProductById(@PathVariable int id) {
+    @GetMapping("/{id}")
+    public Product findProductById(@PathVariable (value = "id") int id) {
         return service.getProductById(id);
     }
 
     // get product by name
-    @GetMapping("/product/{name}")
-    public Product findProductByName(@PathVariable String name) {
+    @GetMapping("/{name}")
+    public Product findProductByName(@RequestParam (value = "name") String name) {
         return service.getProductByName(name);
     }
 
@@ -47,14 +49,18 @@ public class ProductController {
      */
 
     // create a single product
-    @PostMapping("/addProduct")
-    public Product addProduct(@RequestBody Product product) {
+    // default path ---> api/products
+    /**
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
         return service.saveProduct(product);
     }
+     */
 
     // create a list of products
-    @PostMapping("/addProducts")
-    public List<Product> products (@RequestBody List<Product> products) {
+    // defaults path variable to ("api/products")
+    @PostMapping
+    public List<Product> createProducts(@RequestBody List<Product> products) {
         return service.saveProducts(products);
     }
 
@@ -63,8 +69,9 @@ public class ProductController {
      */
 
     // update product
-    @PutMapping("/update")
-    public Product updateProduct(@RequestBody Product product) {
+    // default path variable ("api/products") + id -----> api/products/id
+    @PutMapping("/{id}")
+    public Product updateProduct(@RequestBody Product product, @PathVariable ("id") int id) {
         return service.saveProduct(product);
     }
 
@@ -73,8 +80,9 @@ public class ProductController {
      */
 
     // delete product by id
-    @DeleteMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable int id) {
+    // default path variable ("api/products") + id ---> api/products/id
+    @DeleteMapping("/{id}")
+    public String deleteProduct(@PathVariable ("id") int id) {
         return service.deleteProduct(id);
     }
 

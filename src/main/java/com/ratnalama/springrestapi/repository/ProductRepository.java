@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * ProductRepository.java       --A program to represent a repository class for product entity.
- *                                Using JpaRepository API we'll be able to perform CRUD opertions
+ *                                Using JpaRepository API we'll be able to perform CRUD operations
  *                                for Product entity with integer primary key type.
  * @author                        Ratna Lama
  * @version                       1.0

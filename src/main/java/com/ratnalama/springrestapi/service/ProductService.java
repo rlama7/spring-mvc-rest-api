@@ -1,6 +1,7 @@
 package com.ratnalama.springrestapi.service;
 
 import com.ratnalama.springrestapi.entity.Product;
+import com.ratnalama.springrestapi.exception.ResourceNotFoundException;
 import com.ratnalama.springrestapi.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,14 +25,15 @@ public class ProductService {
      * GET
      */
 
-    // find all
+    // get all product
     public List<Product> getProducts() {
         return repository.findAll();
     }
 
-    // find by Id
+    // get product by Id
     public Product getProductById(int id) {
-        return repository.findById(id).orElse(null);
+        return repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id --> " + id));
     }
 
     // get product by Name
@@ -44,12 +46,12 @@ public class ProductService {
      * POST
      */
 
-    // save all
+    // create a product
     public Product saveProduct(Product product) {
         return repository.save(product);
     }
 
-    // save by Id
+    // create lists of products
     public List<Product> saveProducts(List<Product> products) {
         return repository.saveAll(products);
     }
@@ -57,8 +59,11 @@ public class ProductService {
     /**
      * PUT
      */
+
+    // update a product
     public Product updateProduct(Product product) {
-        Product existingProduct = repository.findById(product.getId()).orElse(null);
+        Product existingProduct = repository.findById(product.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id --> " + product.getId()));
         existingProduct.setName(product.getName());
         existingProduct.setQuantity(product.getQuantity());
         existingProduct.setPrice(product.getPrice());
@@ -68,8 +73,12 @@ public class ProductService {
     /**
      * DELETE
      */
+
+    // delete a product by id
     public String deleteProduct(int id) {
-        repository.deleteById(id);
-        return "Product successfully removed --> " + id;
+        Product existingProduct = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id --> " + id));
+        repository.delete(existingProduct);
+        return "Product successfully removed with id --> " + id;
     }
 }

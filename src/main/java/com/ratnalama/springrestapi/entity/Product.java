@@ -20,24 +20,21 @@ public class Product {
     private int id;
 
     // column annotation specifies the table column field
-    @Column(name = "name")
-    private String name;
 
-    @Column(name = "quantity")
+    private String name;
+    private double price;
     private int quantity;
 
-    @Column(name = "price")
-    private double price;
 
-    // no args constructor
+    // no args constructor needed
     public Product() {
     }
 
     // Id will be AUTO generated thus we exclude it from the Constructor argument lists
     public Product(String name, int quantity, double price) {
         this.name = name;
-        this.quantity = quantity;
         this.price = price;
+        this.quantity = quantity;
     }
 
     @Override
