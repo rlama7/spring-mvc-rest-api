@@ -23,16 +23,20 @@ public class ProductController {
     /**
      * GET
      */
+
+    // get all products
     @GetMapping("/products")
     public List<Product> findAllProducts() {
         return service.getProducts();
     }
 
+    // get product by id
     @GetMapping("/productById/{id}")
     public Product findProductById(@PathVariable int id) {
         return service.getProductById(id);
     }
 
+    // get product by name
     @GetMapping("/product/{name}")
     public Product findProductByName(@PathVariable String name) {
         return service.getProductByName(name);
@@ -41,11 +45,14 @@ public class ProductController {
     /**
      * POST
      */
+
+    // create a single product
     @PostMapping("/addProduct")
     public Product addProduct(@RequestBody Product product) {
         return service.saveProduct(product);
     }
 
+    // create a list of products
     @PostMapping("/addProducts")
     public List<Product> products (@RequestBody List<Product> products) {
         return service.saveProducts(products);
@@ -54,6 +61,8 @@ public class ProductController {
     /**
      * PUT aka UPDATE
      */
+
+    // update product
     @PutMapping("/update")
     public Product updateProduct(@RequestBody Product product) {
         return service.saveProduct(product);
@@ -63,6 +72,7 @@ public class ProductController {
      * DELETE
      */
 
+    // delete product by id
     @DeleteMapping("/delete/{id}")
     public String deleteProduct(@PathVariable int id) {
         return service.deleteProduct(id);
