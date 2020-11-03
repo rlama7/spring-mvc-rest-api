@@ -1,38 +1,40 @@
 package com.ratnalama.springrestapi.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
- * Product.java       --A program to represent a product entity class.
+ * Product.java       --A program to represent a product entity class. This class will map
+ *                      to a product table with specified column fields.
  * @author              Ratna Lama
  * @version             1.0
  * @since               11/01/2020
  */
 
 @Entity
-@Table(name= "PRODUCT_TBL")
+@Table(name = "product")
 public class Product {
 
     // ID is the primary key thus will be annotated as @Id and also will be auto-generated
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String name;
-    private int quantity;
-    private double price;
+    // column annotation specifies the table column field
 
+    private String name;
+    private double price;
+    private int quantity;
+
+
+    // no args constructor needed
     public Product() {
     }
 
-    public Product(int id, String name, int quantity, double price) {
-        this.id = id;
+    // Id will be AUTO generated thus we exclude it from the Constructor argument lists
+    public Product(String name, int quantity, double price) {
         this.name = name;
-        this.quantity = quantity;
         this.price = price;
+        this.quantity = quantity;
     }
 
     @Override
