@@ -39,10 +39,12 @@ public class ProductController {
     }
 
     // get product by name
+    /**
     @GetMapping("/{name}")
     public Product findProductByName(@RequestParam (value = "name") String name) {
         return service.getProductByName(name);
     }
+     */
 
     /**
      * POST
